@@ -1,0 +1,35 @@
+﻿@page
+@model FormWizard.Pages.Countries.DeleteModel
+@{
+}
+
+
+<div class="container-xxl py-5">
+    <form method="post" enctype="multipart/form-data">
+        <input hidden asp-for="country.Id" />
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary pl-3">Delete country</h2>
+                <hr />
+            </div>
+            <div asp-validation-summary="All"></div>
+            <div class="mb-3">
+                <label asp-for="country.Name"></label>
+                <input asp-for="@Model.country.Name" type="text" disabled class="form-control" />
+                <span asp-validation-for="country.Name" class="text-danger"></span>
+            </div>
+
+
+            <div class="mb-3">
+                <label asp-for="country.FlagImage"></label>
+                <input type="file" id="uploadBox" name="file" hidden />
+                <img src="@Model.country.FlagImage" width="70px" height="50px" />
+            </div>
+           
+              <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+            <a asp-page="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+
+        </div>
+
+    </form>
+</div>
