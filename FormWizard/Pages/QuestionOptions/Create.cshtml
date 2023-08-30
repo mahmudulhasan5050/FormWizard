@@ -1,0 +1,42 @@
+﻿@page
+@model FormWizard.Pages.QuestionOptions.CreateModel
+@{
+}
+
+<div class="container-xxl py-5">
+    <form method="post">
+        <input asp-for="questionOption.QuestionId" value="@(ViewData["QuestionId"])" hidden />
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary pl-3">Create Option</h2>
+                <hr />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="questionOption.OptionText"></label>
+                <input asp-for="questionOption.OptionText" class="form-control" />
+                <span asp-validation-for="questionOption.OptionText" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="questionOption.OptionType"></label>
+                <input asp-for="questionOption.OptionType" value="@(ViewData["QuestionType"])" readonly="true" class="form-control" />
+                <span asp-validation-for="questionOption.OptionType" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="questionOption.OptionValue"></label>
+                <input asp-for="questionOption.OptionValue" class="form-control" />
+                <span asp-validation-for="questionOption.OptionValue" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="questionOption.OrderOfDisplay"></label>
+                <input asp-for="questionOption.OrderOfDisplay" class="form-control" />
+                <span asp-validation-for="questionOption.OrderOfDisplay" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <a asp-page="Index" asp-route-questionid="@ViewData["QuestionId"]" asp-route-questiontype="@ViewData["QuestionType"]" class="btn btn-secondary" style="width:150px">Back to List</a>
+
+        </div>
+
+    </form>
+</div>

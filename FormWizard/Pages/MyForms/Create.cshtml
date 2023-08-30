@@ -1,0 +1,37 @@
+﻿@page
+@model FormWizard.Pages.MyForms.CreateModel
+
+
+<div class="container-xxl py-5">
+
+    <form method="post">
+        <div class="border p-3 mt-4">
+            <div class="row pb-2">
+                <h2 class="text-primary pl-3">Create New Form</h2>
+                <hr />
+            </div>
+            <div class="mb-3">
+                <label asp-for="myForm.Name"></label>
+                <input asp-for="myForm.Name" class="form-control" class="form-control" />
+                <span asp-validation-for="myForm.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="myForm.CategoryId"></label>
+                <select asp-for="myForm.CategoryId" asp-items="@(ViewData["categoryList"] as IEnumerable<SelectListItem>)">
+                    <option disabled selected>--- Select Item ---</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="myForm.CountryId"></label>
+                <select asp-for="myForm.CountryId" asp-items="@(ViewData["countryList"] as IEnumerable<SelectListItem>)">
+                    <option disabled selected>--- Select Item ---</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <a asp-page="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+
+        </div>
+
+    </form>
+
+</div>
