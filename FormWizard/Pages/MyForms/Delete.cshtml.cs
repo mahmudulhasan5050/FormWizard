@@ -23,6 +23,8 @@ namespace FormWizard.Pages.MyForms
         public IActionResult OnPost()
         {
             var myFormFromDb = _db.MyForms.Find(myForm.Id);
+            //var questionsFromDb = _db.Questions.Find(myFormFromDb.Id);
+            //var 
             if (myFormFromDb != null)
             {
                 _db.MyForms.Remove(myFormFromDb);
