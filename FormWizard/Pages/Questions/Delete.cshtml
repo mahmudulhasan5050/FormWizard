@@ -1,0 +1,16 @@
+﻿@page
+@model FormWizard.Pages.Questions.DeleteModel
+@{
+}
+
+<div class="container-xxl py-5">
+
+    <form method="post">
+        <input hidden asp-for="question.Id" />
+        <div>
+            <input asp-for="question.QuestionText" disabled class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-page="Index" asp-route-myformid ="@(ViewData["MyFormId"])" class="btn btn-secondary" style="width:150px">Back to List</a>
+    </form>
+</div>

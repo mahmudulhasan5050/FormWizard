@@ -5,13 +5,17 @@
 <div class="container p-3">
 <div class="row pt-4">
     <div class="col-6">
-        <h2 class="text-primary">@(ViewData["FormName"])</h2>
+        <h2 class="text-primary">Form Name: @(ViewData["FormName"])</h2>
     </div>
     <div class="col-6">
             <a asp-page="Create" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i>&nbsp;
             Create Question
         </a>
+            <a asp-page="/myforms/index" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp;
+                Back to Forms
+            </a>
     </div>
 </div>
 <br />
@@ -47,19 +51,19 @@
                     </td>
                     <td width="40%">
                     <div class="w-75 btn-group" role="group">
-                        <a asp-page="Edit" asp-route-questionid="@obj.Id" class="btn btn-primary" mx-2>
+                            <a asp-page="Edit" asp-route-questionid="@obj.Id" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-primary" mx-2>
                             <i class="bi bi-pencil-square"></i>
                             Edit
                         </a>
-                            <a asp-page="Delete" asp-route-questionid="@obj.Id" class="btn btn-danger" mx-2>
+                            <a asp-page="Delete" asp-route-questionid="@obj.Id" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-danger" mx-2>
                             <i class="bi bi-trash-fill"></i>
                             Delete
                         </a>
-                            @if (obj.Type == FormWizard.Model.Question.QuestionType.radio || obj.Type == FormWizard.Model.Question.QuestionType.checkbox)
+                            @if (obj.Type == FormWizard.Model.Question.QuestionType.radio || obj.Type == FormWizard.Model.Question.QuestionType.checkbox || obj.Type == FormWizard.Model.Question.QuestionType.list)
                             {
-                                <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" class="btn btn-primary" mx-2>
+                                <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" asp-route-myformid="@obj.MyFormId" class="btn btn-primary" mx-2>
                                     <i class="bi bi-pencil-square"></i>
-                                    Options Test Git
+                                    Options
                                 </a>
                             }
                     </div>

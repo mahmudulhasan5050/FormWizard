@@ -19,7 +19,8 @@ namespace FormWizard.Pages.QuestionView
         public IActionResult OnGet(int myformid)
         {
             questions = _db.Questions.Where(u => u.MyFormId == myformid);
-            var questionOptions = _db.QuestionOptions.ToList();
+            var questionOptions = _db.QuestionOptions.Where(r => questions.Any(u => u.Id == r.QuestionId)).ToList();
+          //  var ques = _db.QuestionOptions.ToList();
             ViewData["questionOptions"] = questionOptions;
             return Page();
         }

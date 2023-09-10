@@ -12,25 +12,25 @@
                 <h2 class="text-primary pl-3">Form View</h2>
                 <hr />
             </div>
-            @foreach (var obj in Model.questions)
+            @foreach (var ques in Model.questions)
             {
                 //Question Type "Text"
-                if (obj.Type == FormWizard.Model.Question.QuestionType.text)
+                if (ques.Type == FormWizard.Model.Question.QuestionType.text)
                 {
                     <div class="mb-3">
-                        <label>@obj.QuestionText</label>
-                        <input type="@obj.Type" class="form-control" />
-                         <span asp-validation-for="@obj.QuestionText" class="text-danger"></span>
+                        <label>@ques.QuestionText</label>
+                        <input type="@ques.Type" class="form-control" />
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
                     </div>
                 }
                 //Question type "Radio"
-                @if (obj.Type == FormWizard.Model.Question.QuestionType.radio)
+                @if (ques.Type == FormWizard.Model.Question.QuestionType.radio)
                 {
                     <div class="mb-3">
-                        <p>@obj.QuestionText</p>
+                        <p>@ques.QuestionText</p>
                         @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
                         {
-                            if (option.QuestionId == obj.Id)
+                            if (option.QuestionId == ques.Id)
                             {
                                 <div class="form-check">
                                     <label class="form-check-label">@option.OptionText</label>
@@ -39,17 +39,17 @@
                             }
                         }
 
-                    <span asp-validation-for="@obj.QuestionText" class="text-danger"></span>
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
                     </div>
                 }
                 //Question type "Checkbox"
-                @if (obj.Type == FormWizard.Model.Question.QuestionType.checkbox)
+                @if (ques.Type == FormWizard.Model.Question.QuestionType.checkbox)
                 {
                     <div class="mb-3">
-                        <p>@obj.QuestionText</p>
+                        <p>@ques.QuestionText</p>
                         @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
                         {
-                            if (option.QuestionId == obj.Id)
+                            if (option.QuestionId == ques.Id)
                             {
                                 <div class="form-check">
                                     <label class="form-check-label">@option.OptionText</label>
@@ -58,15 +58,56 @@
                             }
                         }
 
-                        <span asp-validation-for="@obj.QuestionText" class="text-danger"></span>
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
+                    </div>
+                }
+                //Question Type "number"
+                if (ques.Type == FormWizard.Model.Question.QuestionType.number)
+                {
+                    <div class="mb-3">
+                        <label>@ques.QuestionText</label>
+                        <input type="@ques.Type" class="form-control" />
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
+                    </div>
+                }
+                //Question Type "date"
+                if (ques.Type == FormWizard.Model.Question.QuestionType.date)
+                {
+                    <div class="mb-3">
+                        <label>@ques.QuestionText</label>
+                        <input type="@ques.Type" class="form-control" />
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
+                    </div>
+                }
+                //Question type "List"
+                @if (ques.Type == FormWizard.Model.Question.QuestionType.list)
+                {
+                    <div class="mb-3">
+                        <label>@ques.QuestionText</label>
+                        <select>
+                            <option disabled selected>--- Select Item ---</option>
+                        @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
+                        {
+                            if (option.QuestionId == ques.Id)
+                            {
+                            <option value="@option.OptionValue">@option.OptionText</option>
+                            }
+                        }
+                        </select>
+                        <span asp-validation-for="@ques.QuestionText" class="text-danger"></span>
                     </div>
                 }
             }
-            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
-            <a asp-page="Index" class="btn btn-secondary" style="width:150px">Back to List</a>
+            <button type="submit" class="btn btn-primary" style="width:150px">Create No</button>
+            <a asp-page="/MyForms/Index" class="btn btn-secondary" style="width:150px">Back to List</a>
 
         </div>
 
     </form>
 
 </div>
+
+@*<label asp-for="myForm.CategoryId"></label>
+<select asp-for="myForm.CategoryId" asp-items="@(ViewData["categoryList"] as IEnumerable<SelectListItem>)">
+    <option disabled selected>--- Select Item ---</option>
+</select>*@

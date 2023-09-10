@@ -21,9 +21,11 @@ namespace FormWizard.Pages.Questions
             if (formFromDb != null)
             {
                 questions = _db.Questions.Where(u=>u.MyFormId == myformid).Include(f => f.MyForm);
+                ViewData["FormName"] = formFromDb.Name;
+                ViewData["MyFormId"] = myformid;
             }
-            ViewData["FormName"] = formFromDb.Name;
-            ViewData["MyFormId"] = myformid;
+
+
             return Page();
         }
     }

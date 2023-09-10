@@ -13,11 +13,17 @@ namespace FormWizard.Model
         public string? QuestionDescription { get; set; }
         public enum QuestionType
         {
+            [Display(Name ="Plain Text Answer")]
             text,
+            [Display(Name = "One Answer from Different Options")]
             radio,
-            checkbox, 
+            [Display(Name = "Multiple Answers from Different Options")]
+            checkbox,
+            [Display(Name = "Number as Answer")]
             number,
+            [Display(Name = "Date as Answer")]
             date,
+            [Display(Name = "One Answer from List Item")]
             list
         }
         [Required]

@@ -14,38 +14,42 @@
                 <i class="bi bi-plus-circle"></i>&nbsp;
                 Create Option
             </a>
+            <a asp-page="/Questions/Index" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-secondary">
+                <i class="bi bi-plus-circle"></i>&nbsp;
+                Back to Questions
+            </a>
         </div>
     </div>
     <br />
     <br />
 
-@*    <table class="table table-bordered table-striped" style="width:100%">
+    <table class="table table-bordered table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>
-                    Question
+                    Question option
                 </th>
                 <th>
                     type
                 </th>
                 <th>
-                    Form Name
+                    Question For
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model.questions)
+            @foreach (var obj in Model.questionOption)
             {
                 <tr>
                     <td width="30%">
-                        @obj.QuestionText
+                        @obj.OptionText
                     </td>
                     <td width="10%">
-                        @obj.Type
+                        @obj.OptionType
                     </td>
                     <td width="20%">
-                        @obj.MyForm.Name
+                        @obj.Question.QuestionText
                     </td>
                     <td width="40%">
                         <div class="w-75 btn-group" role="group">
@@ -53,21 +57,21 @@
                                 <i class="bi bi-pencil-square"></i>
                                 Edit
                             </a>
-                            <a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-danger" mx-2>
+                            <a asp-page="Delete" asp-route-questionoptionid="@obj.Id" asp-route-questionid="@obj.QuestionId" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-danger" mx-2>
                                 <i class="bi bi-trash-fill"></i>
                                 Delete
                             </a>
-                            @if (obj.Type == FormWizard.Model.Question.QuestionType.radio)
+@*                            @if (obj.Type == FormWizard.Model.Question.QuestionType.radio)
                             {
                                 <a asp-page="/QuestionOptions/Index" asp-route-id="@obj.Id" asp-route-type="@obj.Type" class="btn btn-primary" mx-2>
                                     <i class="bi bi-pencil-square"></i>
                                     Options
                                 </a>
-                            }
+                            }*@
                         </div>
                     </td>
                 </tr>
             }
         </tbody>
-    </table>*@
+    </table>
 </div>

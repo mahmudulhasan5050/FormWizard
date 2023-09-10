@@ -32,10 +32,11 @@ namespace FormWizard.Pages.QuestionOptions
             }
             if (ModelState.IsValid)
             {
+                var myFormIdFromDb = _db.Questions.FirstOrDefault(x => x.Id == questionOption.QuestionId);
                 _db.QuestionOptions.Add(questionOption);
                 _db.SaveChanges();
                 TempData["success"] = "Option created successfully!";
-                return RedirectToPage("Index", new { questionid = questionOption.QuestionId, questiontype = questionOption.OptionType });
+                return RedirectToPage("Index", new { questionid = questionOption.QuestionId, questiontype = questionOption.OptionType, myformid = myFormIdFromDb.MyFormId });
             }
             return Page();
         }

@@ -15,7 +15,7 @@ namespace FormWizard.Model
         public string OptionType { get; set; }
         [Display(Name = "Set a value for this option")]
         public string OptionValue { get; set; } = string.Empty;
-        [Display(Name = "Order of Display as answer.")]
+        [Display(Name = "Order of Display as option.")]
         public int? OrderOfDisplay { get; set; }
         [ValidateNever]
         public Question Question { get; set; }
