@@ -15,7 +15,6 @@ namespace FormWizard.Pages.Questions
         }
         [BindProperty]
         public Question question { get; set; }
-
         public void OnGet(int myformid)
         {
             ViewData["MyFormId"] = myformid;
@@ -36,6 +35,5 @@ namespace FormWizard.Pages.Questions
             }
             return Page();
         }
-
     }
 }
