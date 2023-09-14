@@ -1,0 +1,34 @@
+﻿@page
+@model FormWizard.Pages.Questions.DeleteModel
+@{
+}
+
+<div class=class="container-fluid p-0">
+	<br/>
+	<br/>
+	<h3 class="h3 d-inline align-middle">Delete Question</h3>
+	<br/>
+	<br/>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <input hidden asp-for="question.Id" />
+                        <div class="mb-3">
+                            <input asp-for="question.QuestionText" disabled class="form-control" />
+                        </div>
+                        <div class="row justify-content-end">
+							<div class="col-md-auto">
+                               <a asp-page="Index" asp-route-myformid ="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">Back</a>    
+                                             &nbsp
+                               <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

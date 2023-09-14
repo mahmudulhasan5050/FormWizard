@@ -1,0 +1,159 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container p-3">
+<div class="row pt-4">
+    <div class="col-6">
+        <h3 class="h3 d-inline align-middle">Dashboard</h3>
+    </div>
+    <div class="col-6 d-flex justify-content-end">
+		<a class="btn btn-facebook btn-sm" style="float:left" asp-area="" asp-page="CreateNewForm">
+			<i class="bi bi-plus-circle"></i>&nbsp;
+			New Form</a>
+        </a>
+    </div>
+</div>
+<br />
+<div class="row">
+	<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+							<table id="datatables-orders" class="table table-striped">
+								<thead>
+									<tr>
+										<th>Form ID</th>
+										<th>Form Name</th>
+										<th>Category</th>
+										<th>Country</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><strong>ADX156</strong></td>
+										<td>Health Corporate Policies</td>
+										<td>Health</td>
+										<td>FIN</td>
+										<td>
+											<a href="#" class="btn btn-primary btn-sm">View</a>
+											<a href="#" class="btn btn-primary btn-sm">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>MZK589</strong></td>
+										<td>Fire Safety</td>
+										<td>Work Safety</td>
+										<td>EST</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-outline-primary bg-white btn-sm" asp-area="" asp-page="FormDefault">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>EFC753</strong></td>
+										<td>Occupational Safety</td>
+										<td>Work Safety</td>
+										<td>EST</td>
+										<td>
+											<a class="btn btn-outline-primary bg-white btn-sm" asp-area="" asp-page="FormQuestV">View</a>
+											<a class="btn btn-outline-primary bg-white btn-sm" asp-area="" asp-page="FormQuestEd">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>ISL478</strong></td>
+										<td>Financial Risk Assesment</td>
+										<td>Finance</td>
+										<td>FIN</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>STU425</strong></td>
+										<td>Corporate Productivity</td>
+										<td>Work Productivity</td>
+										<td>EST</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>AMY463</strong></td>
+										<td>Market Balance 2023</td>
+										<td>Finance</td>
+										<td>FIN</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>KWH394</strong></td>
+										<td>Sick Leaves Policy</td>
+										<td>Health</td>
+										<td>FIN</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>WGE284</strong></td>
+										<td>Phishing and other internet frauds</td>
+										<td>Work Safety</td>
+										<td>EST</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>NRY364</strong></td>
+										<td>5 minute desk workout</td>
+										<td>Health</td>
+										<td>EST</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+									<tr>
+										<td><strong>HTK353</strong></td>
+										<td>Expansion Plan</td>
+										<td>Finance</td>
+										<td>FIN</td>
+										<td>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">View</a>
+											<a class="btn btn-primary btn-sm" asp-area="" asp-page="Index">Edit</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+            <div>
+        <div>
+    <div>
+</div>
+</div>
+
+
+	<script src="~/js/app.js"></script>
+
+	<script src="~/js/datatables.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Datatables Orders
+			$("#datatables-orders").DataTable({
+				responsive: true,
+				aoColumnDefs: [{
+					bSortable: false,
+					aTargets: [-1]
+				}]
+			});
+		});
+	</script>

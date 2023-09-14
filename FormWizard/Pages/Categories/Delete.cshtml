@@ -1,0 +1,48 @@
+﻿@page
+@model FormWizard.Pages.Categories.DeleteModel
+@{
+}
+
+
+
+<div class=class="container-fluid p-0">
+	<br/>
+	<br/>
+	<h3 class="h3 d-inline align-middle">Delete Category</h3>
+	<br/>
+	<br/>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <input hidden asp-for="category.Id" />
+                        <div class="border p-3 mt-4">
+                            <div asp-validation-summary="All"></div>
+                            <div class="mb-3">
+                                <label asp-for="category.Name"></label>
+                                <input asp-for="@Model.category.Name" type="text" disabled class="form-control" />
+                                <span asp-validation-for="category.Name" class="text-danger"></span>
+                            </div>
+                             <div class="row justify-content-end">
+							    <div class="col-md-auto">
+                                     <a asp-page="Index" class="btn btn-light bg-white btn-sm">Back</a>    
+                                             &nbsp
+                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                 </div>
+                             </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

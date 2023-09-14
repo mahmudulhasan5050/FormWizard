@@ -1,0 +1,89 @@
+﻿@page
+@model FormWizard.Pages.QuestionOptions.IndexModel
+@{
+}
+
+
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h3 class="h3 d-inline align-middle">Question Option</h3>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+            <nav class="nav btn-group">
+                <a asp-page="/Questions/Index" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">
+                    <i class="bi bi-arrow-left"></i>&nbsp;
+                    Back to Questions
+                </a>
+                <a asp-page="Create" asp-route-questionid="@(ViewData["QuestionId"])" asp-route-questiontype="@(ViewData["QuestionType"])" class="btn btn-facebook btn-sm">
+                <i class="bi bi-plus-circle"></i>&nbsp;
+                Create Question
+                </a>
+            </nav>
+        </div>
+    </div>
+    <br />
+    <br />
+	<div class="row">
+	    <div class="col-12">
+	        <div class="card">
+	            <div class="card-body">
+                    <table class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Question option
+                                </th>
+                                <th>
+                                    type
+                                </th>
+                                <th>
+                                    Question For
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var obj in Model.questionOption)
+                            {
+                                <tr>
+                                    <td width="30%">
+                                        @obj.OptionText
+                                    </td>
+                                    <td width="10%">
+                                        @obj.OptionType
+                                    </td>
+                                    <td width="40%">
+                                        @obj.Question.QuestionText
+                                    </td>
+                                    <td width="20%">
+                                        <div>
+                                            <nav class="nav btn-group">
+                                                <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary btn-sm">
+                                                    <i class="bi bi-pencil-square style="font-size: 0.8rem; color: white;""></i>
+                                                    Edit
+                                                </a>
+                                                <a asp-page="Delete" asp-route-questionoptionid="@obj.Id" asp-route-questionid="@obj.QuestionId" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash-fill style="font-size: 0.8rem; color: white;""></i>
+                                                    Delete
+                                                </a>
+                    @*                            @if (obj.Type == FormWizard.Model.Question.QuestionType.radio)
+                                                {
+                                                    <a asp-page="/QuestionOptions/Index" asp-route-id="@obj.Id" asp-route-type="@obj.Type" class="btn btn-primary btn-sm">
+                                                        <i class="bi bi-pencil-square style="font-size: 0.8rem; color: white;""></i>
+                                                        Options
+                                                    </a>
+                                                }*@
+                                            </nav>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

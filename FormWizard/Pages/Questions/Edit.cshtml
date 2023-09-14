@@ -1,0 +1,67 @@
+﻿@page
+@using FormWizard.Model;
+@model FormWizard.Pages.Questions.EditModel
+@{
+}
+
+<div class="container-fluid p-0">
+	<br/>
+	<br/>
+	<h3 class="h3 d-inline align-middle">Create Question</h3>
+	<br/>
+	<br/>
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <input asp-for="question.Id" hidden />
+                        <div class="border p-3 mt-4">
+                            <div class="row pb-2">
+                                <h2 class="text-primary pl-3">Create Question</h2>
+                                <hr />
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.QuestionText"></label>
+                                <input asp-for="question.QuestionText" class="form-control" class="form-control" />
+                                <span asp-validation-for="question.QuestionText" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.QuestionDescription"></label>
+                                <input asp-for="question.QuestionDescription" class="form-control" class="form-control" />
+                                <span asp-validation-for="question.QuestionDescription" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.Type"></label>
+                                <select asp-for="question.Type" asp-items="Html.GetEnumSelectList<Question.QuestionType>()">
+                                    <option disabled selected>--- Select Item ---</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.OrderOfDisplay"></label>
+                                <input asp-for="question.OrderOfDisplay" class="form-control" class="form-control" />
+                                <span asp-validation-for="question.OrderOfDisplay" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.Extension"></label>
+                                <input asp-for="question.Extension" class="form-control" class="form-control" />
+                                <span asp-validation-for="question.Extension" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="question.MyFormId"></label>
+                                <input asp-for="question.MyFormId" value="@(ViewData["MyFormId"])" class="form-control" class="form-control" readonly />
+                            </div>
+
+                            <div class="row justify-content-end">
+							    <div class="col-md-auto">
+                                     <a asp-page="Index" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">Back</a>
+                                     <button type="submit"  class="btn btn-primary btn-sm">Edit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
