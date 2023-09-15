@@ -9,7 +9,7 @@
     </div>
     <div class="col-6 d-flex justify-content-end">
         <nav class="nav btn-group">
-            <a asp-page="/myforms/index" class="btn btn-light bg-white btn-sm">
+                <a asp-page="/MyForms/index" class="btn btn-light bg-white btn-sm">
                 <i class="bi bi-arrow-left"></i>&nbsp;
                 Back to Forms
             </a>
@@ -65,9 +65,9 @@
                                     <i class="bi bi-trash-fill" style="font-size: 0.8rem; color: white;"></i>
                                     Delete
                                     </a>
-                                        @if (obj.Type == FormWizard.Model.Question.QuestionType.radio || obj.Type == FormWizard.Model.Question.QuestionType.checkbox)
+                                                @if (obj.Type == FormWizard.Model.Question.QuestionType.radio || obj.Type == FormWizard.Model.Question.QuestionType.checkbox || obj.Type == FormWizard.Model.Question.QuestionType.list)
                                         {
-                                            <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" class="btn btn-light bg-white btn-sm">
+                                                    <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">
                                             
                                               &nbsp Options
                                             </a>
