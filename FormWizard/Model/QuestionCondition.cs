@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FormWizard.Model
 {
-    public class Question
+    public class QuestionCondition
     {
         [Key]
         public int Id { get; set; }
@@ -13,7 +12,7 @@ namespace FormWizard.Model
         public string? QuestionDescription { get; set; }
         public enum QuestionType
         {
-            [Display(Name ="Plain Text Answer")]
+            [Display(Name = "Plain Text Answer")]
             text,
             [Display(Name = "One Answer from Different Options")]
             radio,
@@ -29,16 +28,14 @@ namespace FormWizard.Model
         [Required]
         public QuestionType Type { get; set; }
         [Required]
+        [Display(Name ="Required")]
         public bool IsRequired { get; set; } = false;
         public int? OrderOfDisplay { get; set; }
-        [Required]
-        [Display(Name = "This Question has Extended questions")]
-        public bool? Extension { get; set; } = false;
+
         public string? Value { get; set; }
         [ValidateNever]
-        public MyForm MyForm { get; set; }
+        public Question Question { get; set; }
         [Required]
-        public int MyFormId { get; set; }
-
+        public int QuestionId { get; set; }
     }
 }
