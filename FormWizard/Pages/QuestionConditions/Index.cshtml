@@ -31,19 +31,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Question
+                                    Question condition
                                 </th>
                                 <th>
                                     type
                                 </th>
-                                <th>
-                                    Form Name
-                                </th>
                                 <th></th>
                             </tr>
                         </thead>
-@*                        <tbody>
-                            @foreach (var obj in Model.questions)
+                        <tbody>
+                        @foreach (var obj in Model.questionConditions)
                             {
                                 <tr>
                                     <td width="30%">
@@ -53,37 +50,28 @@
                                         @obj.Type
                                     </td>
                                     <td width="20%">
-                                        @obj.MyForm.Name
-                                    </td>
-                                    <td width="20%">
                                         <div>
                                             <nav class="nav btn-group">
-                                                <a asp-page="Edit" asp-route-questionid="@obj.Id" class="btn btn-primary btn-sm">
+                                                <a asp-page="Edit" asp-route-questionconditionid="@obj.Id" asp-route-questionid="@obj.QuestionId" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-primary btn-sm">
                                                     <i class="bi bi-pencil-square" style="font-size: 0.8rem; color: white;"></i>
                                                     Edit
                                                 </a>
-                                                <a asp-page="Delete" asp-route-questionid="@obj.Id" class="btn btn-danger btn-sm">
+                                                <a asp-page="Delete" asp-route-questionconditionid="@obj.Id" class="btn btn-danger btn-sm">
                                                     <i class="bi bi-trash-fill" style="font-size: 0.8rem; color: white;"></i>
                                                     Delete
                                                 </a>
-                                                @if (obj.Type == FormWizard.Model.Question.QuestionType.radio || obj.Type == FormWizard.Model.Question.QuestionType.checkbox || obj.Type == FormWizard.Model.Question.QuestionType.list)
+@*                                                @if (obj.Type == FormWizard.Model.QuestionCondition.QuestionType.radio || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.checkbox || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.list)
                                                 {
                                                     <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">
                                                         &nbsp Options
                                                     </a>
-                                                }
-                                                @if (obj.Extension == true)
-                                                {
-                                                    <a asp-page="/QuestionConditions/Index" asp-route-questionid="@obj.Id" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-secondary btn-sm">
-                                                        &nbsp Options
-                                                    </a>
-                                                }
+                                                }*@
                                             </nav>
                                         </div>
                                     </td>
                                 </tr>
                             }
-                        </tbody>*@
+                        </tbody>
                     </table>
                     <div>
                         <div>
