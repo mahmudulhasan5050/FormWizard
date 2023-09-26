@@ -60,12 +60,12 @@
                                                     <i class="bi bi-trash-fill" style="font-size: 0.8rem; color: white;"></i>
                                                     Delete
                                                 </a>
-@*                                                @if (obj.Type == FormWizard.Model.QuestionCondition.QuestionType.radio || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.checkbox || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.list)
+                                                @if (obj.Type == FormWizard.Model.QuestionCondition.QuestionType.radio || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.checkbox || obj.Type == FormWizard.Model.QuestionCondition.QuestionType.list)
                                                 {
-                                                    <a asp-page="/QuestionOptions/Index" asp-route-questionid="@obj.Id" asp-route-questiontype="@obj.Type" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">
+                                                    <a asp-page="/QuestionConditionOptions/Index" asp-route-questionconditionid="@obj.Id" asp-route-questionid="@obj.QuestionId" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">
                                                         &nbsp Options
                                                     </a>
-                                                }*@
+                                                }
                                             </nav>
                                         </div>
                                     </td>

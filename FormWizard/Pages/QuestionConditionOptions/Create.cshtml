@@ -1,0 +1,43 @@
+﻿@page
+@model FormWizard.Pages.QuestionConditionOptions.CreateModel
+@{
+   
+}
+
+<div class="container-fluid p-0">
+    <br />
+    <br />
+    <h3 class="h3 d-inline align-middle">New Option</h3>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        <input asp-for="questionConditionOption.QuestionConditionId" value="@(ViewData["QuestionConditionId"])" hidden />
+                        <div class="border p-3 mt-4">
+                            <div class="mb-3">
+                                <label asp-for="questionConditionOption.ConditionOptionText"></label>
+                                <input asp-for="questionConditionOption.ConditionOptionText" class="form-control" />
+                                <span asp-validation-for="questionConditionOption.ConditionOptionText" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="questionConditionOption.OptionValue"></label>
+                                <input asp-for="questionConditionOption.OptionValue" class="form-control" />
+                                <span asp-validation-for="questionConditionOption.OptionValue" class="text-danger"></span>
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-md-auto">
+                                    <a asp-page="Index" asp-route-questionconditionid="@(ViewData["QuestionConditionId"])" asp-route-questionid="@(ViewData["QuestionId"])" asp-route-myformid="@ViewData["MyFormId"]" class="btn btn-light bg-white btn-sm">Back</a>
+                                    &nbsp
+                                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
