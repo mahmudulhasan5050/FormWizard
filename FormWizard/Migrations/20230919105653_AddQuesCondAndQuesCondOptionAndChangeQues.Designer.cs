@@ -4,14 +4,16 @@ using FormWizard.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormWizard.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230919105653_AddQuesCondAndQuesCondOptionAndChangeQues")]
+    partial class AddQuesCondAndQuesCondOptionAndChangeQues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,70 +123,6 @@ namespace FormWizard.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("FormWizard.Model.QuestionCondition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsRequired")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("OrderOfDisplay")
-                        .HasColumnType("int");
-
-                    b.Property<string>("QuestionDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("QuestionText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("QuestionConditions");
-                });
-
-            modelBuilder.Entity("FormWizard.Model.QuestionConditionOption", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ConditionOptionText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OptionValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("OrderOfDisplay")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionConditionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionConditionId");
-
-                    b.ToTable("QuestionConditionsOptions");
-                });
-
             modelBuilder.Entity("FormWizard.Model.QuestionOption", b =>
                 {
                     b.Property<int>("Id")
@@ -245,28 +183,6 @@ namespace FormWizard.Migrations
                         .IsRequired();
 
                     b.Navigation("MyForm");
-                });
-
-            modelBuilder.Entity("FormWizard.Model.QuestionCondition", b =>
-                {
-                    b.HasOne("FormWizard.Model.Question", "Question")
-                        .WithMany()
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
-            modelBuilder.Entity("FormWizard.Model.QuestionConditionOption", b =>
-                {
-                    b.HasOne("FormWizard.Model.QuestionCondition", "QuestionCondition")
-                        .WithMany()
-                        .HasForeignKey("QuestionConditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("QuestionCondition");
                 });
 
             modelBuilder.Entity("FormWizard.Model.QuestionOption", b =>
