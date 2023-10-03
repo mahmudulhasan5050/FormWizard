@@ -11,7 +11,7 @@ namespace FormWizard.Pages.Questions
         private readonly ApplicationDbContext _db;
 
 
-        public DeleteModel(ApplicationDbContext db, IWebHostEnvironment hostEnvironment)
+        public DeleteModel(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -28,6 +28,7 @@ namespace FormWizard.Pages.Questions
         {
             var questionToDelete = _db.Questions.Find(question.Id); 
             var questionOptionsFromDb = _db.QuestionOptions.Where(u => u.QuestionId == question.Id);
+            
             if (questionOptionsFromDb == null)
             {
                 NotFound();
