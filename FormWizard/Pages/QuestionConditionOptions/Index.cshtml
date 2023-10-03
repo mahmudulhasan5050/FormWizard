@@ -66,7 +66,7 @@
                                                     <i class="bi bi-pencil-square style=" font-size: 0.8rem; color: white;""></i>
                                                     Edit
                                                 </a>
-                                                <a asp-page="Delete" asp-route-questionconditionoptionid="@obj.Id" asp-route-questionconditionid="@obj.QuestionConditionId" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-danger btn-sm">
+                                                <a asp-page="Delete" asp-route-questionconditionoptionid="@obj.Id" asp-route-questionid="@(ViewData["QuestionId"])" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-danger btn-sm" hidden>
                                                     <i class="bi bi-trash-fill style=" font-size: 0.8rem; color: white;""></i>
                                                     Delete
                                                 </a>
