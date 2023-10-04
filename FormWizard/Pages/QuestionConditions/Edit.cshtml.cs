@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FormWizard.Pages.QuestionConditions
@@ -15,10 +16,22 @@ namespace FormWizard.Pages.QuestionConditions
         }
         [BindProperty]
         public QuestionCondition questionCondition { get; set; }
+
+        [BindProperty]
+        public IEnumerable<SelectListItem> optionList { get; set; }
         public void OnGet(int questionconditionid,int questionid, int myformid)
         {
             questionCondition = _db.QuestionConditions.Find(questionconditionid);
-           //var questionText = _db.Questions.FirstOrDefault(u => u.Id == questionid);
+            var questionOptionFromDb = _db.QuestionOptions.Where(u => u.QuestionId == questionid);
+            if (questionOptionFromDb != null)
+            {
+                optionList = questionOptionFromDb.Select(u =>
+                   new SelectListItem
+                   {
+                       Text = u.OptionText,
+                       Value = u.OptionText
+                   }).ToList();
+            }
             ViewData["QuestionId"] = questionid;
             ViewData["MyFormId"] = myformid;
         }

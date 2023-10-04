@@ -36,6 +36,16 @@
                                 <input asp-for="question.Type" readonly="true"/>  
                             </div>
                             <div class="mb-3">
+                                <input asp-for="question.IsRequired" class="form-check-input" />
+                                <label asp-for="question.IsRequired"></label>
+                                <span asp-validation-for="question.IsRequired" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
+                                <input asp-for="question.IsInUse" class="form-check-input" />
+                                <label asp-for="question.IsInUse"></label>
+                                <span asp-validation-for="question.IsInUse" class="text-danger"></span>
+                            </div>
+                            <div class="mb-3">
                                 <label asp-for="question.Extension"></label>
                                 <input asp-for="question.Extension" class="form-control" class="form-control" />
                                 <span asp-validation-for="question.Extension" class="text-danger"></span>

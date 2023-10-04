@@ -10,6 +10,10 @@
             <h3 class="h3 d-inline align-middle"> Forms</h3>
         </div>
         <div class="col-6 d-flex justify-content-end">
+            <form method="post">
+                <label for="showAll">Show All</label>
+                <input type="checkbox" id="showAll" asp-for="ShowAll" />
+            </form>
             <a asp-page="create" class="btn btn-facebook btn-sm">
                 <i class="bi bi-plus-circle"></i>&nbsp;
                 Add Form
@@ -81,3 +85,14 @@
     </div>
 
 </div>
+
+@section Scripts {
+
+    <script>
+        $(function (){
+            $("#showAll").change(function() {
+                $(this).closest('form').submit();
+            })
+        })
+    </script>
+}
