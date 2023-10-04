@@ -12,16 +12,22 @@ namespace FormWizard.Pages.QuestionView
         {
             _db = db;
         }
+        public IEnumerable<Question> questions { get; set; }
+
         [BindProperty]
-        public IQueryable<Question> questions { get; set; }
-        //[BindProperty]
-        //public IQueryable<QuestionOption> questionOptions { get; set; }
+        public IEnumerable<QuestionOption> questionOptions { get; set; }
+        [BindProperty]
+        public IEnumerable<QuestionCondition> questionCondition { get; set; }
+        [BindProperty]
+        public IEnumerable<QuestionConditionOption> questionConditionOption { get; set; }
+
         public IActionResult OnGet(int myformid)
         {
             questions = _db.Questions.Where(u => u.MyFormId == myformid);
-            var questionOptions = _db.QuestionOptions.Where(r => questions.Any(u => u.Id == r.QuestionId)).ToList();
-          //  var ques = _db.QuestionOptions.ToList();
-            ViewData["questionOptions"] = questionOptions;
+            questionOptions = _db.QuestionOptions.Where(r => questions.Any(u => u.Id == r.QuestionId)).ToList();
+            questionCondition = _db.QuestionConditions.Where(r=> questions.Any(u => u.Id == r.QuestionId)).ToList();
+            questionConditionOption = _db.QuestionConditionsOptions.Where(r => questionCondition.Any(u=> u.Id == r.QuestionConditionId));
+ 
             return Page();
         }
     }

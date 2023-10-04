@@ -30,6 +30,8 @@ namespace FormWizard.Model
         public QuestionType Type { get; set; }
         [Required]
         public bool IsRequired { get; set; } = false;
+        [Required]
+        public bool IsInUse { get; set; } = true;
         public int? OrderOfDisplay { get; set; }
         [Required]
         [Display(Name = "This Question has Extended questions")]

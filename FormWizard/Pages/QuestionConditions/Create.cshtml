@@ -33,6 +33,12 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label asp-for="questionCondition.Value"></label>
+                                <select asp-for="questionCondition.Value" asp-items="@Model.optionList">
+                                    <option disabled selected>--- Select Item ---</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <input asp-for="questionCondition.IsRequired" class="form-check-input" />
                                 <label asp-for="questionCondition.IsRequired"></label>
                                 <span asp-validation-for="questionCondition.IsRequired" class="text-danger"></span>

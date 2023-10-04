@@ -21,9 +21,6 @@
                                 //Question Type "Text"
                                 if (ques.Type == FormWizard.Model.Question.QuestionType.text)
                                 {
-                                    @*
-                                        reffer
-                                    *@
                                     <div class="mb-3">
                                         <label>@ques.QuestionText</label>
                                         <input type="@ques.Type" class="form-control" />
@@ -35,7 +32,7 @@
                                 {
                                     <div class="mb-3">
                                         <p>@ques.QuestionText</p>
-                                        @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
+                                        @foreach (var option in Model.questionOptions)
                                         {
                                             if (option.QuestionId == ques.Id)
                                             {
@@ -54,7 +51,7 @@
                                 {
                                     <div class="mb-3">
                                         <p>@ques.QuestionText</p>
-                                        @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
+                                        @foreach (var option in Model.questionOptions)
                                         {
                                             if (option.QuestionId == ques.Id)
                                             {
@@ -93,7 +90,7 @@
                                         <label>@ques.QuestionText</label>
                                         <select>
                                             <option disabled selected>--- Select Item ---</option>
-                                        @foreach (var option in ViewData["questionOptions"] as IEnumerable<QuestionOption>)
+                                            @foreach (var option in Model.questionOptions)
                                         {
                                             if (option.QuestionId == ques.Id)
                                             {
