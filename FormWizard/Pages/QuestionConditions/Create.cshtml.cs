@@ -15,9 +15,14 @@ namespace FormWizard.Pages.QuestionConditions
         }
         [BindProperty]
         public QuestionCondition questionCondition { get; set; }
-
         [BindProperty]
         public IEnumerable<SelectListItem> optionList { get; set; }
+
+        [BindProperty(SupportsGet =true)]
+        public int questionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int myFormId { get; set; }
+
         public void OnGet(int questionid, int myformid)
         {
             var questionOptionFromDb = _db.QuestionOptions.Where(u => u.QuestionId == questionid);
@@ -31,23 +36,20 @@ namespace FormWizard.Pages.QuestionConditions
                       }).ToList();
                       }
 
-            ViewData["QuestionId"] = questionid;
-            ViewData["MyFormId"] = myformid;
+            questionId = questionid;
+            myFormId = myformid;
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                ViewData["QuestionId"] = questionCondition.QuestionId;
-            }
+            questionCondition.CreatedAt = questionCondition.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 var myFormIdFromDb = _db.Questions.FirstOrDefault(x => x.Id == questionCondition.QuestionId);
                 _db.QuestionConditions.Add(questionCondition);
                 _db.SaveChanges();
                 TempData["success"] = "New Question Condition has been created.";
-                return RedirectToPage("Index", new { questionid = questionCondition.QuestionId, myformid = myFormIdFromDb.MyFormId });
+                return RedirectToPage("Index", new { questionid = questionId, myformid = myFormId });
             }
             return Page();
         }

@@ -49,6 +49,7 @@ namespace FormWizard.Pages.MyForms
 
         public IActionResult OnPost()
         {
+            myForm.CreatedAt = myForm.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.MyForms.Add(myForm);

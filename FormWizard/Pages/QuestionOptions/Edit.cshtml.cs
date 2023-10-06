@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FormWizard.Pages.QuestionOptions
 {
@@ -22,6 +23,7 @@ namespace FormWizard.Pages.QuestionOptions
 
         public IActionResult OnPost()
         {
+            questionOption.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 var formInfoFromDb = _db.Questions.FirstOrDefault(x => x.Id == questionOption.QuestionId);

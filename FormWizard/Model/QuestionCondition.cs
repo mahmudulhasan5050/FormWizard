@@ -37,5 +37,7 @@ namespace FormWizard.Model
         public Question Question { get; set; }
         [Required]
         public int QuestionId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

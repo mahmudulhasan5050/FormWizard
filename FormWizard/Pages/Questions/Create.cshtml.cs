@@ -27,6 +27,9 @@ namespace FormWizard.Pages.Questions
             {
                 ViewData["MyFormId"] = question.MyFormId;
             }
+
+
+            question.CreatedAt = question.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.Questions.Add(question);

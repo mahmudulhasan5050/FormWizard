@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using static FormWizard.Model.Question;
 
 namespace FormWizard.Pages.QuestionOptions
@@ -30,6 +31,8 @@ namespace FormWizard.Pages.QuestionOptions
                 ViewData["QuestionId"] = questionOption.QuestionId;
                 ViewData["QuestionType"] = questionOption.OptionType;
             }
+
+            questionOption.CreatedAt = questionOption.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 var myFormIdFromDb = _db.Questions.FirstOrDefault(x => x.Id == questionOption.QuestionId);

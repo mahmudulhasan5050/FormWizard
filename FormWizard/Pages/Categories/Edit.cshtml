@@ -22,6 +22,9 @@
                                 <input asp-for="@Model.category.Name" type="text" class="w-100 form-control" />
                                 <span asp-validation-for="category.Name" class="text-danger"></span>
                             </div>
+                            <div class="mb-3">
+                                <input asp-for="category.CreatedAt" class="form-control" hidden />
+                            </div>
                             <div class="row justify-content-end">
 								<div class="col-md-auto">
                                     <a asp-page="Index" class="btn btn-light bg-white btn-sm">Back</a>

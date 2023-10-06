@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FormWizard.Pages.QuestionConditionOptions
 {
@@ -32,8 +33,9 @@ namespace FormWizard.Pages.QuestionConditionOptions
             if (!ModelState.IsValid)
             {
                 ViewData["QuestiononditionId"] = questionConditionOption.QuestionConditionId;
-               
             }
+
+            questionConditionOption.CreatedAt = questionConditionOption.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.QuestionConditionsOptions.Add(questionConditionOption);

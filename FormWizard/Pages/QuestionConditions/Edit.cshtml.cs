@@ -19,6 +19,13 @@ namespace FormWizard.Pages.QuestionConditions
 
         [BindProperty]
         public IEnumerable<SelectListItem> optionList { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public int questionId { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int myFormId { get; set; }
+
+
         public void OnGet(int questionconditionid,int questionid, int myformid)
         {
             questionCondition = _db.QuestionConditions.Find(questionconditionid);
@@ -32,19 +39,19 @@ namespace FormWizard.Pages.QuestionConditions
                        Value = u.OptionText
                    }).ToList();
             }
-            ViewData["QuestionId"] = questionid;
-            ViewData["MyFormId"] = myformid;
+            questionId = questionid;
+            myFormId = myformid;
         }
 
         public IActionResult OnPost()
         {
+            questionCondition.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
-                var formInfoFromDb = _db.Questions.FirstOrDefault(x => x.Id == questionCondition.QuestionId);
                 _db.QuestionConditions.Update(questionCondition);
                 _db.SaveChanges();
                 TempData["success"] = "Question Condition has been updated.";
-                return RedirectToPage("Index", new { questionid = questionCondition.QuestionId, myformid = formInfoFromDb.MyFormId });
+                return RedirectToPage("Index", new { questionid = questionId, myformid = myFormId });
             }
             return Page();
         }
