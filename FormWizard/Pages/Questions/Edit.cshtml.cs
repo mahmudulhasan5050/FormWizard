@@ -23,6 +23,7 @@ namespace FormWizard.Pages.Questions
 
         public IActionResult OnPost()
         {
+            question.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.Questions.Update(question);

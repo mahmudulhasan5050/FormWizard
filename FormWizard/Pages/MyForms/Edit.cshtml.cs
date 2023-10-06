@@ -55,6 +55,8 @@ namespace FormWizard.Pages.MyForms
 
         public IActionResult OnPost()
         {
+            myForm.UpdatedAt = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 _db.MyForms.Update(myForm);

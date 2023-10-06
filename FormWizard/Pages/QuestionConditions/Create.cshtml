@@ -43,11 +43,11 @@
                                 <label asp-for="questionCondition.IsRequired"></label>
                                 <span asp-validation-for="questionCondition.IsRequired" class="text-danger"></span>
                             </div>                   
-                                <input asp-for="questionCondition.QuestionId" value="@(ViewData["QuestionId"])" hidden />             
+                                <input asp-for="questionCondition.QuestionId" value="@Model.questionId" hidden />             
                             <div class="row justify-content-end">
 
                                 <div class="col-md-auto">
-                                    <a asp-page="Index" asp-route-myformid="@(ViewData["MyFormId"])" class="btn btn-light bg-white btn-sm">Back</a>
+                                    <a asp-page="Index" asp-route-question="@Model.questionId" asp-route-myformid="@Model.myFormId" class="btn btn-light bg-white btn-sm">Back</a>
                                     &nbsp
                                     <button type="submit" class="btn btn-primary btn-sm">Add</button>
                                 </div>

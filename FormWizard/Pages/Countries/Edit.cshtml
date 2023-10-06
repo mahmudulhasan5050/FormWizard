@@ -25,7 +25,10 @@
                                 <br />
                                 <input asp-for="@Model.country.Name" type="text" class="w-100 form-control" />
                                 <span asp-validation-for="country.Name" class="text-danger"></span>
-                            </div>     
+                            </div>
+                            <div class="mb-3">
+                                <input asp-for="country.CreatedAt" class="form-control" hidden />
+                            </div>
                             <br />
                             <div class="mb-3">
                                 <label asp-for="country.FlagImage"></label>

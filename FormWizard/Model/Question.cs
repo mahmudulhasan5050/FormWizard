@@ -42,5 +42,8 @@ namespace FormWizard.Model
         [Required]
         public int MyFormId { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
     }
 }

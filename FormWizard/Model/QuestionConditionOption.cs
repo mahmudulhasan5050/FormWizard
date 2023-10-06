@@ -19,5 +19,7 @@ namespace FormWizard.Model
         public QuestionCondition QuestionCondition { get; set; }
         [Required]
         public int QuestionConditionId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

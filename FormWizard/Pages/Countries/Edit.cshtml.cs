@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FormWizard.Pages.Countries
 {
@@ -25,8 +26,7 @@ namespace FormWizard.Pages.Countries
 
         public async Task<IActionResult> OnPost(Country country, IFormFile? file)
         {
-          
-
+            country.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _hostEnvironment.WebRootPath;

@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FormWizard.Pages.Categories
 {
@@ -21,6 +22,7 @@ namespace FormWizard.Pages.Categories
 
         public IActionResult OnPost()
         {
+            category.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.Category.Update(category);

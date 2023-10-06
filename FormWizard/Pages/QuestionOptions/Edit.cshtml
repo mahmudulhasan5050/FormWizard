@@ -32,6 +32,9 @@
                                 <input asp-for="questionOption.OptionValue" class="form-control" />
                                 <span asp-validation-for="questionOption.OptionValue" class="text-danger"></span>
                             </div>
+                            <div class="mb-3">
+                                <input asp-for="questionOption.CreatedAt" class="form-control" hidden />
+                            </div>
 
                             <div class="row justify-content-end">
                                 <div class="col-md-auto">

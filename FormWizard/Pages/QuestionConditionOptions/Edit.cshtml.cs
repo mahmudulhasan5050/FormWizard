@@ -2,6 +2,7 @@ using FormWizard.Data;
 using FormWizard.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Routing;
 
 namespace FormWizard.Pages.QuestionConditionOptions
@@ -31,6 +32,7 @@ namespace FormWizard.Pages.QuestionConditionOptions
 
         public IActionResult OnPost()
         {
+            questionConditionOption.UpdatedAt = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _db.QuestionConditionsOptions.Update(questionConditionOption);
